@@ -26,4 +26,85 @@ const restaurant = {
       close: 24,
     },
   },
+
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  orderDelivery: function ({ starterIndex, mainIndex, time, adress }) {
+    console.log(
+      `Order recived! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]}
+      will be delivered ${time} at ${adress} `
+    );
+  },
 };
+
+restaurant.orderDelivery({
+  time: '22.30',
+  adress: 'Via del mar',
+  mainIndex: 2,
+  starterIndex: 0,
+});
+
+restaurant.orderDelivery({
+  time: '22.30',
+  adress: 'Sivilla del 21',
+  mainIndex: 1,
+  starterIndex: 1,
+});
+const {
+  name: restaurantName,
+  location: restaurantLocation,
+  openingHours,
+} = restaurant;
+
+console.log(restaurantName, restaurantLocation, openingHours);
+
+// defult value
+
+const { menu = [], starterMenu: starter = [] } = restaurant;
+
+console.log(menu, starter);
+
+let a = 111;
+let b = 222;
+let c = 2;
+
+const obj = { a: 23, b: 33, c: [] };
+
+({ a, b } = obj);
+
+console.log(a, b, c);
+
+const {
+  fri: { open, close },
+} = openingHours;
+
+console.log(open, close);
+
+/* des array
+let [main, secondary] = restaurant.categories;
+
+console.log(main, secondary);
+
+[main, secondary] = [secondary, main];
+
+console.log(main, secondary);
+
+const [ettan, tvaa] = restaurant.order(2, 0);
+
+console.log(ettan, tvaa);
+
+// destructa i en destructor (multi)
+
+const nested = [2, 4, [5, 6]];
+
+console.log(nested);
+
+//const [i, , j] = nested;
+
+const [i, , [j, k]] = nested;
+
+console.log(i, j, k); */
+
+// des object
