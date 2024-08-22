@@ -37,8 +37,13 @@ const restaurant = {
       will be delivered ${time} at ${adress} `
     );
   },
+  orderPasta: function(ing1,ing2,ing3) {
+    console.log(`Here is your declicious pasta with ${ing1}, ${ing2}
+      and ${ing3}`)
+  }
 };
 
+/*
 restaurant.orderDelivery({
   time: '22.30',
   adress: 'Via del mar',
@@ -57,7 +62,7 @@ const {
   location: restaurantLocation,
   openingHours,
 } = restaurant;
-
+  
 console.log(restaurantName, restaurantLocation, openingHours);
 
 // defult value
@@ -80,8 +85,8 @@ const {
   fri: { open, close },
 } = openingHours;
 
-console.log(open, close);
-
+console.log("open",open, close);
+*/
 /* des array
 let [main, secondary] = restaurant.categories;
 
@@ -108,3 +113,53 @@ const [i, , [j, k]] = nested;
 console.log(i, j, k); */
 
 // des object
+
+
+const spred = [2,3,4,6,2,1,4];
+const addSpredd = ['hej','king', {k:4}, ...spred]
+const newMenu = [...restaurant.mainMenu, "Oxfile",'Cheddar',{Grilla: 'Hårt'}]
+
+// kopia av menu
+const mainMenyCope = [...newMenu]
+
+const menu = [...restaurant.starterMenu, ...mainMenyCope]
+
+// real world ex
+/*const ingredients = [prompt("Let's make pasta! ingredients 1"),
+  prompt("ingredients 2"),prompt("ingredients 3")
+]
+console.log(ingredients)
+restaurant.orderPasta(...ingredients)
+*/
+
+
+// Object
+
+/*
+const newresturange = {...restaurant, founder : 'KING', founding:'1981'}
+
+
+const resturangCope = {...restaurant}
+
+resturangCope.name = 'KING PLACE'
+console.log(newresturange)
+console.log(resturangCope)
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
