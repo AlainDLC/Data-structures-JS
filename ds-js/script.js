@@ -40,7 +40,13 @@ const restaurant = {
   orderPasta: function(ing1,ing2,ing3) {
     console.log(`Here is your declicious pasta with ${ing1}, ${ing2}
       and ${ing3}`)
+  },
+  orderPizza: function(mainIng,...otherIng){
+
+     console.log(mainIng)
+     console.log(otherIng)
   }
+  
 };
 
 /*
@@ -147,19 +153,59 @@ console.log(resturangCope)
 
 */
 
+const [Focaccia, ...other] = [...restaurant.starterMenu]
 
 
 
+// collect element 
+
+const {sat, ...weekday} = restaurant.openingHours
+
+// ex function
+
+const add =  function (...number){
+let sum = 0;
+for(let i = 0; i<number.length ; i++ ){
+  sum += number[i]
+  console.log(sum)
+}
+}
+
+/*
+add(2,3,4)
+
+const x = [23,5,7]
+
+add(...x)
+
+restaurant.orderPizza('KebabPizza', 'ham ', 'mozzerela','feferoni','cheddar')
+
+*/
+
+/*
+const rest1 = {
+  name:'Capri',
+  numGuests :30,
+}
+*/
+
+const rest1 = {
+  name:'Capri',
+  numGuests :0,
+}
 
 
+const rest2 = {
+  name:'Capri',
+  owner: 'King'
+}
 
 
+rest1.numGuests ??= 10 // nullish operator kommer sätta rätt
+//rest2.numGuests ||= 10
 
+rest2.owner &&= 'Anynom'
 
+console.log(rest1)
 
-
-
-
-
-
-
+console.log(rest2)
