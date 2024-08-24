@@ -4,6 +4,33 @@
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
+const veckodagar = [
+  'Måndag',
+  'Tisdag',
+  'Onsdag',
+  'Torsdag',
+  'Fredag',
+  'Lördag',
+  'Söndag',
+];
+
+const openingHours = {
+  [veckodagar[0]]: {
+    open: 12,
+    close: 22,
+  },
+  [veckodagar[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [veckodagar[5]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
+console.log(openingHours);
+
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
@@ -12,42 +39,72 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
-
-  order: function (starterIndex, mainIndex) {
+  openingHours,
+  order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
-  orderDelivery: function ({ starterIndex, mainIndex, time, adress }) {
+  orderDelivery({ starterIndex, mainIndex, time, adress }) {
     console.log(
       `Order recived! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]}
       will be delivered ${time} at ${adress} `
     );
   },
-  orderPasta: function(ing1,ing2,ing3) {
+  orderPasta(ing1, ing2, ing3) {
     console.log(`Here is your declicious pasta with ${ing1}, ${ing2}
-      and ${ing3}`)
+      and ${ing3}`);
   },
-  orderPizza: function(mainIng,...otherIng){
-
-     console.log(mainIng)
-     console.log(otherIng)
-  }
-  
+  orderPizza(mainIng, ...otherIng) {
+    console.log(mainIng);
+    console.log(otherIng);
+  },
 };
+
+const menyer = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+// destructa loppen
+/*
+for (const [index, element] of menyer.entries()) {
+  console.log(`${index + 1} Bara att väja ${element}`);
+}
+*/
+const dagar = [
+  'Måndag',
+  'Tisdag',
+  'Onsdag',
+  'Torsdag',
+  'Fredag',
+  'Lördag',
+  'Söndag',
+];
+
+/*
+for (const day of dagar) {
+  const open = restaurant.openingHours?.[day]?.open ?? 'Stängt';
+
+  console.log(`${day} Välkommen  ${open}`);
+}
+*/
+// properti name
+const properties = Object.keys(openingHours);
+
+let openStr = `We are open on ${properties.length} dayz: `;
+
+for (const dagar of properties) {
+  openStr += `${dagar}, `;
+}
+console.log(openStr);
+
+const value = Object.values(openingHours);
+
+console.log(value);
+
+// anerslunda hur man loppar i object
+const entries = Object.entries(openingHours);
+
+for (const [key, { today: open, close }] of entries ?? 0) {
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
+}
 
 /*
 restaurant.orderDelivery({
@@ -120,15 +177,19 @@ console.log(i, j, k); */
 
 // des object
 
-
-const spred = [2,3,4,6,2,1,4];
-const addSpredd = ['hej','king', {k:4}, ...spred]
-const newMenu = [...restaurant.mainMenu, "Oxfile",'Cheddar',{Grilla: 'Hårt'}]
+const spred = [2, 3, 4, 6, 2, 1, 4];
+const addSpredd = ['hej', 'king', { k: 4 }, ...spred];
+const newMenu = [
+  ...restaurant.mainMenu,
+  'Oxfile',
+  'Cheddar',
+  { Grilla: 'Hårt' },
+];
 
 // kopia av menu
-const mainMenyCope = [...newMenu]
+const mainMenyCope = [...newMenu];
 
-const menu = [...restaurant.starterMenu, ...mainMenyCope]
+const menu = [...restaurant.starterMenu, ...mainMenyCope];
 
 // real world ex
 /*const ingredients = [prompt("Let's make pasta! ingredients 1"),
@@ -137,7 +198,6 @@ const menu = [...restaurant.starterMenu, ...mainMenyCope]
 console.log(ingredients)
 restaurant.orderPasta(...ingredients)
 */
-
 
 // Object
 
@@ -153,23 +213,21 @@ console.log(resturangCope)
 
 */
 
-const [Focaccia, ...other] = [...restaurant.starterMenu]
+const [Focaccia, ...other] = [...restaurant.starterMenu];
 
+// collect element
 
-
-// collect element 
-
-const {sat, ...weekday} = restaurant.openingHours
+const { sat, ...weekday } = restaurant.openingHours;
 
 // ex function
 
-const add =  function (...number){
-let sum = 0;
-for(let i = 0; i<number.length ; i++ ){
-  sum += number[i]
-  console.log(sum)
-}
-}
+const add = function (...number) {
+  let sum = 0;
+  for (let i = 0; i < number.length; i++) {
+    sum += number[i];
+    console.log(sum);
+  }
+};
 
 /*
 add(2,3,4)
@@ -189,23 +247,20 @@ const rest1 = {
 }
 */
 
+/*
 const rest1 = {
-  name:'Capri',
-  numGuests :0,
-}
-
+  name: 'Capri',
+  numGuests: 0,
+};
 
 const rest2 = {
-  name:'Capri',
-  owner: 'King'
-}
+  name: 'Capri',
+  owner: 'King',
+};
 
-
-rest1.numGuests ??= 10 // nullish operator kommer sätta rätt
+rest1.numGuests ??= 10; // nullish operator kommer sätta rätt
 //rest2.numGuests ||= 10
 
-rest2.owner &&= 'Anynom'
+rest2.owner &&= 'Anynom';
 
-console.log(rest1)
-
-console.log(rest2)
+*/

@@ -39,3 +39,18 @@ const game = {
   },
 };
 
+const [players1, players2] = game.players;
+
+const [gf, ...fieldPlayer] = players1;
+
+const allPlayer = [...players1, ...players2];
+
+const playerFilal = [...allPlayer, 'Thoago', 'Coutinoh', 'Perisic'];
+
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
+
+console.log(team1, draw, team2);
+
+team1 < team2 && console.log(`${team1} winner nog`);
