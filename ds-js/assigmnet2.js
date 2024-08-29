@@ -39,18 +39,21 @@ const game = {
   },
 };
 
-const [players1, players2] = game.players;
+for (const [i, player] of game.scored.entries())
+  console.log(`${i + 1} ${player}`);
 
-const [gf, ...fieldPlayer] = players1;
+const odds = Object.values(game.odds);
+let average = 0;
 
-const allPlayer = [...players1, ...players2];
+for (const odds of Object.values(game.odds)) {
+  average += odds;
+  average /= odds;
 
-const playerFilal = [...allPlayer, 'Thoago', 'Coutinoh', 'Perisic'];
+  console.log(` ${average}`);
+}
 
-const {
-  odds: { team1, x: draw, team2 },
-} = game;
+for (const [tem, odd] of Object.entries(game.odds)) {
+  const teamSte = tem === 'x' ? 'draw' : `victory ${game[tem]}`;
 
-console.log(team1, draw, team2);
-
-team1 < team2 && console.log(`${team1} winner nog`);
+  console.log(`${teamSte} :  ${odd}`);
+}

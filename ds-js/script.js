@@ -29,8 +29,6 @@ const openingHours = {
   },
 };
 
-console.log(openingHours);
-
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
@@ -86,7 +84,7 @@ for (const day of dagar) {
 }
 */
 // properti name
-const properties = Object.keys(openingHours);
+/*const properties = Object.keys(openingHours);
 
 let openStr = `We are open on ${properties.length} dayz: `;
 
@@ -105,7 +103,7 @@ const entries = Object.entries(openingHours);
 for (const [key, { today: open, close }] of entries ?? 0) {
   console.log(`On ${key} we open at ${open} and close at ${close}`);
 }
-
+*/
 /*
 restaurant.orderDelivery({
   time: '22.30',
@@ -177,6 +175,7 @@ console.log(i, j, k); */
 
 // des object
 
+/*
 const spred = [2, 3, 4, 6, 2, 1, 4];
 const addSpredd = ['hej', 'king', { k: 4 }, ...spred];
 const newMenu = [
@@ -190,7 +189,7 @@ const newMenu = [
 const mainMenyCope = [...newMenu];
 
 const menu = [...restaurant.starterMenu, ...mainMenyCope];
-
+*/
 // real world ex
 /*const ingredients = [prompt("Let's make pasta! ingredients 1"),
   prompt("ingredients 2"),prompt("ingredients 3")
@@ -212,7 +211,7 @@ console.log(newresturange)
 console.log(resturangCope)
 
 */
-
+/*
 const [Focaccia, ...other] = [...restaurant.starterMenu];
 
 // collect element
@@ -228,7 +227,7 @@ const add = function (...number) {
     console.log(sum);
   }
 };
-
+*/
 /*
 add(2,3,4)
 
@@ -262,5 +261,48 @@ rest1.numGuests ??= 10; // nullish operator kommer sätta rätt
 //rest2.numGuests ||= 10
 
 rest2.owner &&= 'Anynom';
+
+*/
+
+// Set
+
+// Example remove dublickate
+/*
+const orderSet = new Set([
+  'Pizza',
+  'Pizza',
+  'Patsa',
+  'Örfil',
+  'FISK',
+  'FISK',
+  'FISK',
+]).size;
+
+console.log(orderSet);
+console.log(new Set('KING'));
+console.log(orderSet.size);
+console.log(orderSet.has('Pizza'));
+console.log(orderSet.has('Blob'));
+console.log(orderSet.add('GG'));
+console.log(orderSet.delete('Örfil'));
+
+for (const order of orderSet) {
+  console.log(order);
+}
+
+const exapmleStaff = new Set([
+  'Du',
+  'Jag',
+  'Du',
+  'Örfil',
+  'Bla',
+  'Bla',
+  'PLOP',
+]);
+
+// skapar en array
+const uniqeArrayOfStaff = [...new Set(exapmleStaff)];
+
+console.log(uniqeArrayOfStaff);
 
 */
